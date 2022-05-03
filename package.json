@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "cleanup": "rimraf ./dist",
-    "start:dev": "nodmeon src/index.ts",
+    "start:dev": "ts-node src/index.ts",
     "build": "npm run cleanup && tsc",
     "test": "jest",
     "test:watch": "jest --watch"
