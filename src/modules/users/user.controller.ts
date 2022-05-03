@@ -1,22 +1,18 @@
-import { Request, NextFunction, Response, RequestHandler } from 'express';
+import { Request, Response } from 'express';
+import { genSalt, hash } from 'bcrypt'
+
 import { catchErrors } from '../../app/errors/asyncCatch';
 import { UsersService } from './user.service'
 
-export class UsersController {
-  static createUser(req: Request, res: Response) {
-    // return new UsersService().createUser(email, password);
-  }
-}
+export const createUser = catchErrors(async (req: Request, res: Response) => {
+  const { email, password, fullname, birthdate, lastLogin } = req.body;
+
+  const result = await UsersService.createUser(email, password, fullname, birthdate, lastLogin);
+  
+  res.send(result);
+});
 
 export const loginUser = catchErrors(async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const token = await UsersService.loginUser(email, password);
 });
-
-export const createUser = catchErrors(async (req: Request, res: Response) => {
-  const { email, password } = req.body;
-  await UsersService.createUser(email, password);
-  res.send();
-});
-
-// export default createUser;

@@ -3,12 +3,14 @@ GET http://localhost:3000/
 
 
 ###
-POST http://localhost:3000/auth/
+POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "Jora@dev.com",
-    "password": "password"
+    "email": "jora@dev.com",
+    "password": "password",
+    "fullname": "Joe Biden",
+    "birthdate": "5/3/2022, 5:18:46 PM"
 }
 
 ###

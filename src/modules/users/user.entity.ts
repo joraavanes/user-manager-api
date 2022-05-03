@@ -5,7 +5,7 @@ export type UserType = {
     password: string,
     fullname: string,
     birthdate: Date,
-    lastLogin: Date
+    lastLogin?: Date
 };
 
 const UserSchema = new Schema<UserType>({
@@ -26,8 +26,7 @@ const UserSchema = new Schema<UserType>({
         required: true
     },
     lastLogin: {
-        type: Date,
-        required: true
+        type: Date
     }
 });
 

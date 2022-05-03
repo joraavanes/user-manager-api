@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import * as routes from './user.controller';
-import authorize from '../../app/middleware/auth';
+import authorize from '../../app/middleware/authenticate.auth';
 
 const router = Router();
 
-router.post('/login', routes.loginUser);
+// Signs up a new user
+router.post('/signup', authorize, routes.createUser);
 
-// router.post('/', (req: Request, res: Response, next: NextFunction) => a(req, res) );
-router.post('/', authorize, routes.createUser);
+// Signs in a user
+router.post('/signin', routes.loginUser);
 
 export default router;
