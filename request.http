@@ -23,11 +23,12 @@ Content-Type: application/json
 }
 
 ### Updates user information
-PATCH http://localhost:3000/auth/update/peter@dev.com
+PATCH http://localhost:3000/auth/update
 Content-Type: application/json
 
 {
+    "email": "peter@dev.com",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1ODk2Njl9.H-aki9pWkftS9o5CU0ik9fob0rDWsfezgMTwQwIOaYI",
-    "fullname": "Johnny Depp",
+    "fullname": "Pete Black",
     "birthdate": "5/3/2022, 7:45:42 PM"
 }

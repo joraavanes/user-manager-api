@@ -13,6 +13,8 @@ router.post('/signup', routes.createUser);
 router.post('/signin', routes.loginUser);
 
 // Updates user information
-router.patch('/update/:email', authenticate, routes.updateUser);
+router.patch('/update', authenticate, routes.updateUser);
+
+router.post('/signout', )
 
 export default router;

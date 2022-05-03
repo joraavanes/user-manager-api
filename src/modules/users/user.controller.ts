@@ -22,8 +22,7 @@ export const loginUser = catchErrors(async (req: Request, res: Response) => {
 });
 
 export const updateUser = catchErrors(async (req: Request, res: Response) => {
-  const { email } = req.params;
-  const { password, fullname, birthdate } = req.body;
+  const { email, password, fullname, birthdate } = req.body;
   const result = await UsersService.updateUser(email, fullname, birthdate, password);
 
   res.send({

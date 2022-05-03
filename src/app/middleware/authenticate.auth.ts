@@ -4,8 +4,7 @@ import { UsersService } from "../../modules/users/user.service";
 import { catchErrors } from "../errors/asyncCatch";
 
 const authenticate = catchErrors(async (req: Request, res: Response, next: NextFunction) => {
-    const { email } = req.params;
-    const { token } = req.body;
+    const { email, token } = req.body;
 
     const data: any = UsersService.verifyToken(token);
 
