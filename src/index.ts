@@ -1,4 +1,6 @@
+require("dotenv").config();
 import { createServer } from 'http';
+
 import { expressLoader, mongooseLoader } from "./app/loaders";
 import { seedDb } from './app/utils/seed.db';
 
@@ -10,7 +12,7 @@ async function bootstrap() {
 
     const server = createServer(app);
 
-    server.listen(3000, () => console.log('server is running'));
+    server.listen(process.env.PORT, () => console.log('server is running'));
 }
 
 bootstrap();

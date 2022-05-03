@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { verify } from "jsonwebtoken";
+
 import { UsersService } from "../../modules/users/user.service";
 import { catchErrors } from "../errors/asyncCatch";
 

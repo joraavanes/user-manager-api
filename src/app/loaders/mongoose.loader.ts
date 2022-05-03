@@ -3,7 +3,7 @@ import { ConnectionOptions } from 'tls';
 
 export const mongooseLoader = async (): Promise<void> => {
     try {
-        await connect('mongodb://localhost:27017/express-playground');
+        await connect(process.env.DB||'');
     } catch (error) {
         process.exit(this);
     }

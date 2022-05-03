@@ -17,10 +17,6 @@ export const expressLoader = (): Application => {
     app.use(express.json());
     app.use('/auth', userRoutes);
 
-    app.get('/', (req: Request, res: Response, next: NextFunction) => {
-        res.send('Express app is running!')
-    });
-
     app.use((err: AnyError, req: Request, res: Response, next: NextFunction) => {
         console.log(err);
         logger.error(err.message);
