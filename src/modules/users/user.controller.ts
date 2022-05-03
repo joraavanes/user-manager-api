@@ -30,3 +30,10 @@ export const updateUser = catchErrors(async (req: Request, res: Response) => {
     birthdate: result?.birthdate
   });
 });
+
+export const logoutUser = catchErrors(async (req: Request, res: Response) => {
+  const { token } = req.body;
+  await UsersService.logoutUser(token);
+
+  res.send('User signed out');
+});

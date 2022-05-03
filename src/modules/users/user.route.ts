@@ -1,7 +1,6 @@
 import { Router } from 'express';
 
 import * as routes from './user.controller';
-import authorize from '../../app/middleware/authenticate.auth';
 import authenticate from '../../app/middleware/authenticate.auth';
 
 const router = Router();
@@ -12,9 +11,10 @@ router.post('/signup', routes.createUser);
 // Signs in a user
 router.post('/signin', routes.loginUser);
 
-// Updates user information
+// Updates user information with data payload
 router.patch('/update', authenticate, routes.updateUser);
 
-router.post('/signout', )
+// Signs out the user by token
+router.post('/signout', authenticate, routes.logoutUser);
 
 export default router;

@@ -30,7 +30,7 @@ Content-Type: application/json
 
 {
     "email": "peter@dev.com",
-    "password": "PassWord"
+    "password": "NewPassWord@2022"
 }
 
 ### Updates user information
@@ -39,7 +39,7 @@ Content-Type: application/json
 
 {
     "email": "peter@dev.com",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1ODk2Njl9.H-aki9pWkftS9o5CU0ik9fob0rDWsfezgMTwQwIOaYI",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1OTQ4NDF9.Ps0dfFLU7kAscPOrBibThI-dx6lzyik0_AmpMuHf6Lg",
     "fullname": "Pete Black",
     "birthdate": "5/3/2022, 7:45:42 PM"
 }
@@ -50,6 +50,15 @@ Content-Type: application/json
 
 {
     "email": "peter@dev.com",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1ODk2Njl9.H-aki9pWkftS9o5CU0ik9fob0rDWsfezgMTwQwIOaYI",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1OTQ4NDF9.Ps0dfFLU7kAscPOrBibThI-dx6lzyik0_AmpMuHf6Lg",
     "password": "NewPassWord@2022"
+}
+
+### signs out user by token 
+POST  http://localhost:3000/auth/signout
+Content-Type: application/json
+
+{
+    "email": "peter@dev.com",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1ODk2Njl9.H-aki9pWkftS9o5CU0ik9fob0rDWsfezgMTwQwIOaYI"
 }

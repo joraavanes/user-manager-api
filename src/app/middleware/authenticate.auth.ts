@@ -8,7 +8,7 @@ const authenticate = catchErrors(async (req: Request, res: Response, next: NextF
 
     const data: any = UsersService.verifyToken(token);
 
-    const user = await UsersService.getUserByToken(token, data.email);
+    const user = await UsersService.getUserByToken(token);
 
     if (data.email === email && user) {
         return next();

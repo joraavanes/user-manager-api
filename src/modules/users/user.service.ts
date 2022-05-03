@@ -1,13 +1,12 @@
 import { compare, genSalt, hash } from "bcrypt";
-import jwt, { verify } from 'jsonwebtoken'
+import { sign, verify } from 'jsonwebtoken'
 import { Date } from "mongoose";
 
 import { User, UserType } from "./user.entity";
 
 export class UsersService {
-    static async getUserByToken(token: string, email: string): Promise<UserType|null> {
+    static async getUserByToken(token: string): Promise<UserType | null> {
         return await User.findOne({
-            email,
             "tokens.token": token
         });
     }
@@ -39,7 +38,7 @@ export class UsersService {
 
         if (!passwordCheck) throw new Error('Email or password is incorrect');
 
-        const token = jwt.sign({
+        const token = sign({
             email: user.email,
         }, "SECRETKEY");
 
@@ -49,9 +48,26 @@ export class UsersService {
         return token;
     }
 
-    static async updateUser(email: string, fullname: string, birthdate: Date, password: string): Promise<UserType|null> {
+    static async logoutUser(token: string) {
+        const user = await this.getUserByToken(token);
+
+        if (!user) throw new Error('User doesn\'t exists');
+
+        return await User.findOneAndUpdate(
+            {
+                email: user.email
+            },
+            {
+                $set: {
+                    tokens: []
+                }
+            }
+        );
+    }
+
+    static async updateUser(email: string, fullname: string, birthdate: Date, password: string): Promise<UserType | null> {
         let hashedPassword = undefined;
-        if(password){
+        if (password) {
             hashedPassword = await this.generateHash(password);
         }
 
@@ -96,7 +112,7 @@ export class UsersService {
         }
     }
 
-    static async generateHash(plainPassword: string): Promise<string>{
+    static async generateHash(plainPassword: string): Promise<string> {
         const salt = await genSalt(10);
         return await hash(plainPassword, salt);
     }
