@@ -28,9 +28,19 @@ Content-Type: application/json
 
 {
     "email": "peter@dev.com",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1OTQ4NDF9.Ps0dfFLU7kAscPOrBibThI-dx6lzyik0_AmpMuHf6Lg",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1OTkwNDN9.J7azSeyk4Q-cx8fYi5vU1mpw83S_U5hYKDmWAhhhntg",
     "fullname": "Pete Black",
     "birthdate": "5/3/2022, 7:45:42 PM"
+}
+
+### Admin user updates other users' data
+PATCH http://localhost:3000/auth/update
+Content-Type: application/json
+
+{
+    "email": "mike@dev.com",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1OTkwNDN9.J7azSeyk4Q-cx8fYi5vU1mpw83S_U5hYKDmWAhhhntg",
+    "fullname": "Mike Rosenburg"
 }
 
 ### Updates user information
@@ -49,5 +59,5 @@ Content-Type: application/json
 
 {
     "email": "peter@dev.com",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1ODk2Njl9.H-aki9pWkftS9o5CU0ik9fob0rDWsfezgMTwQwIOaYI"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1OTkwNDN9.J7azSeyk4Q-cx8fYi5vU1mpw83S_U5hYKDmWAhhhntg"
 }

@@ -10,6 +10,10 @@ const authenticate = catchErrors(async (req: Request, res: Response, next: NextF
 
     const user = await UsersService.getUserByToken(token);
 
+    if(user?.role === 'admin') {
+        return next();
+    }
+
     if (data.email === email && user) {
         return next();
     }

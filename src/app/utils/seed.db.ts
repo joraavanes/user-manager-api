@@ -11,18 +11,21 @@ export const seedDb = async () => {
                 "email": "peter@dev.com",
                 "password": await UsersService.generateHash('PassWord'),
                 "fullname": "Peter Jackson",
+                "role": "admin",
                 "birthdate": new Date()
             },
             {
                 "email": "mike@dev.com",
                 "password": await UsersService.generateHash('PassWord'),
                 "fullname": "Mike Black",
+                "role": "user",
                 "birthdate": new Date()
             },
             {
                 "email": "sue@dev.com",
                 "password": await UsersService.generateHash('PassWord'),
                 "fullname": "Sue Hopkins",
+                "role": "user",
                 "birthdate": new Date()
             },
         ];

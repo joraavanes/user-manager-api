@@ -9,6 +9,7 @@ export type UserType = {
     email: string,
     password: string,
     fullname: string,
+    role: string,
     birthdate: Date,
     lastLogin?: Date,
     tokens?: Token[];
@@ -24,6 +25,10 @@ const UserSchema = new Schema<UserType>({
         required: true
     },
     fullname: {
+        type: String,
+        required: true
+    },
+    role:{
         type: String,
         required: true
     },

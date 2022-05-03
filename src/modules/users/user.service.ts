@@ -22,6 +22,7 @@ export class UsersService {
             email,
             password: hashedPassword,
             fullname,
+            role: 'user',
             birthdate,
             lastLogin
         });
