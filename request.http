@@ -7,20 +7,9 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "mike@dev.com",
-    "password": "PassWord",
-    "fullname": "Mike Federer",
-    "birthdate": "5/3/2022, 5:18:46 PM"
-}
-
-### Signs up a new user
-POST http://localhost:3000/auth/signup
-Content-Type: application/json
-
-{
     "email": "peter@dev.com",
     "password": "PassWord",
-    "fullname": "Peter Jackson",
+    "fullname": "Mike Federer",
     "birthdate": "5/3/2022, 5:18:46 PM"
 }
 
@@ -30,7 +19,7 @@ Content-Type: application/json
 
 {
     "email": "peter@dev.com",
-    "password": "NewPassWord@2022"
+    "password": "PassWord"
 }
 
 ### Updates user information
