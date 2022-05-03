@@ -2,22 +2,32 @@
 GET http://localhost:3000/
 
 
-###
+### Signs up a new user
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "jora@dev.com",
-    "password": "password",
-    "fullname": "Joe Biden",
+    "email": "peter@dev.com",
+    "password": "PassWord",
+    "fullname": "Peter Jackson",
     "birthdate": "5/3/2022, 5:18:46 PM"
 }
 
-###
+### Signs in a user
 POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-    "email": "jora@dev.com",
-    "password": "password"
+    "email": "peter@dev.com",
+    "password": "PassWord"
+}
+
+### Updates user information
+PATCH http://localhost:3000/auth/update/peter@dev.com
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1ODk2Njl9.H-aki9pWkftS9o5CU0ik9fob0rDWsfezgMTwQwIOaYI",
+    "fullname": "Johnny Depp",
+    "birthdate": "5/3/2022, 7:45:42 PM"
 }

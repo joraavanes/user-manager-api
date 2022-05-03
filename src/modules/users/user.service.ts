@@ -1,9 +1,17 @@
 import { compare, genSalt, hash } from "bcrypt";
-import jwt from 'jsonwebtoken'
+import jwt, { verify } from 'jsonwebtoken'
+import { Date } from "mongoose";
 
-import { User } from "./user.entity";
+import { User, UserType } from "./user.entity";
 
 export class UsersService {
+    static async getUserByToken(token: string, email: string): Promise<UserType|null> {
+        return await User.findOne({
+            email,
+            "tokens.token": token
+        });
+    }
+
     static async createUser(email: string, password: string, fullname: string, birthdate: Date, lastLogin: Date) {
         const existingUser = await User.findOne({ email });
 
@@ -20,7 +28,6 @@ export class UsersService {
             lastLogin
         });
 
-        console.log(user);
         return await user.save();
     }
 
@@ -43,11 +50,27 @@ export class UsersService {
         return token;
     }
 
+    static async updateUser(email: string, fullname: string, birthdate: Date, password: string): Promise<UserType|null> {
+        return await User.findOneAndUpdate<UserType>(
+            { email },
+            {
+                $set: {
+                    password,
+                    fullname,
+                    birthdate
+                },
+            }, {
+            new: true
+        }
+        );
+    }
+
     static async updateUserToken(email: string, token: string): Promise<void> {
         await User.findOneAndUpdate(
-            { email }, 
-            {$set: { tokens: [{ access: 'user', token }] },
-        });
+            { email },
+            {
+                $set: { tokens: [{ access: 'user', token }] },
+            });
     }
 
     static async updateLastLogin(email: string): Promise<void> {
@@ -59,5 +82,13 @@ export class UsersService {
         }, {
             new: true
         });
+    }
+
+    static verifyToken(token: string) {
+        try {
+            return verify(token, 'SECRETKEY', { complete: false });
+        } catch (error) {
+            throw error;
+        }
     }
 }
