@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { genSalt, hash } from 'bcrypt'
 
 import { catchErrors } from '../../app/errors/asyncCatch';
 import { UsersService } from './user.service'
@@ -15,4 +14,8 @@ export const createUser = catchErrors(async (req: Request, res: Response) => {
 export const loginUser = catchErrors(async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const token = await UsersService.loginUser(email, password);
+
+  res.send({
+    'X-AUTH-TOKEN': token
+  });
 });

@@ -14,10 +14,10 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/auth/login
+POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-    "email": "mina@dev.com",
+    "email": "jora@dev.com",
     "password": "password"
 }

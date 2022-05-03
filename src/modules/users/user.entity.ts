@@ -1,11 +1,17 @@
 import { Schema, model } from 'mongoose'
 
+type Token = {
+    access: string;
+    token: string;
+};
+
 export type UserType = {
     email: string,
     password: string,
     fullname: string,
     birthdate: Date,
-    lastLogin?: Date
+    lastLogin?: Date,
+    tokens?: Token[];
 };
 
 const UserSchema = new Schema<UserType>({
@@ -27,7 +33,17 @@ const UserSchema = new Schema<UserType>({
     },
     lastLogin: {
         type: Date
-    }
+    },
+    tokens: [{
+        access:{
+            type: String,
+            required: true
+        },
+        token:{
+            type: String,
+            required: true
+        }
+    }]
 });
 
 export const User = model('users', UserSchema);
