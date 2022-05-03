@@ -8,7 +8,11 @@ export const createUser = catchErrors(async (req: Request, res: Response) => {
 
   const result = await UsersService.createUser(email, password, fullname, birthdate, lastLogin);
 
-  res.send(result);
+  res.send({
+    email: result?.email,
+    fullname: result?.fullname,
+    birthdate: result?.birthdate
+  });
 });
 
 export const loginUser = catchErrors(async (req: Request, res: Response) => {
@@ -35,5 +39,7 @@ export const logoutUser = catchErrors(async (req: Request, res: Response) => {
   const { token } = req.body;
   await UsersService.logoutUser(token);
 
-  res.send('User signed out');
+  res.send({
+    signOutresult: true
+  });
 });
