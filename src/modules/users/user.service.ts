@@ -17,8 +17,7 @@ export class UsersService {
 
         if (existingUser) throw new Error('User already exists');
 
-        const salt = await genSalt(10);
-        const hashedPassword = await hash(password, salt);
+        const hashedPassword = await this.generateHash(password);
 
         const user = new User({
             email,
@@ -51,11 +50,16 @@ export class UsersService {
     }
 
     static async updateUser(email: string, fullname: string, birthdate: Date, password: string): Promise<UserType|null> {
+        let hashedPassword = undefined;
+        if(password){
+            hashedPassword = await this.generateHash(password);
+        }
+
         return await User.findOneAndUpdate<UserType>(
             { email },
             {
                 $set: {
-                    password,
+                    password: hashedPassword,
                     fullname,
                     birthdate
                 },
@@ -90,5 +94,10 @@ export class UsersService {
         } catch (error) {
             throw error;
         }
+    }
+
+    static async generateHash(plainPassword: string): Promise<string>{
+        const salt = await genSalt(10);
+        return await hash(plainPassword, salt);
     }
 }

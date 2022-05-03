@@ -7,6 +7,17 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
+    "email": "mike@dev.com",
+    "password": "PassWord",
+    "fullname": "Mike Federer",
+    "birthdate": "5/3/2022, 5:18:46 PM"
+}
+
+### Signs up a new user
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
     "email": "peter@dev.com",
     "password": "PassWord",
     "fullname": "Peter Jackson",
@@ -31,4 +42,14 @@ Content-Type: application/json
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1ODk2Njl9.H-aki9pWkftS9o5CU0ik9fob0rDWsfezgMTwQwIOaYI",
     "fullname": "Pete Black",
     "birthdate": "5/3/2022, 7:45:42 PM"
+}
+
+### Updates user information
+PATCH http://localhost:3000/auth/update
+Content-Type: application/json
+
+{
+    "email": "peter@dev.com",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBldGVyQGRldi5jb20iLCJpYXQiOjE2NTE1ODk2Njl9.H-aki9pWkftS9o5CU0ik9fob0rDWsfezgMTwQwIOaYI",
+    "password": "NewPassWord@2022"
 }

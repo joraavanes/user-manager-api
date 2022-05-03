@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 
 import { catchErrors } from '../../app/errors/asyncCatch';
-import { UserType } from './user.entity';
 import { UsersService } from './user.service'
 
 export const createUser = catchErrors(async (req: Request, res: Response) => {
