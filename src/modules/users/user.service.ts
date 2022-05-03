@@ -5,6 +5,8 @@ import { Date } from "mongoose";
 import { User, UserType } from "./user.entity";
 
 export class UsersService {
+    private static JwtSecret = process.env.JWT_SECRET || 'JWT_SECRET_KEY'
+
     // Finds user based on stored token
     static async getUserByToken(token: string): Promise<UserType | null> {
         return await User.findOne({
@@ -44,7 +46,7 @@ export class UsersService {
 
         const token = sign({
             email: user.email,
-        }, "SECRETKEY");
+        }, this.JwtSecret);
 
         await this.updateUserToken(email, token);
         await this.updateLastLogin(email);
@@ -115,7 +117,7 @@ export class UsersService {
     // Verifies the jwt
     static verifyToken(token: string) {
         try {
-            return verify(token, 'SECRETKEY', { complete: false });
+            return verify(token, this.JwtSecret , { complete: false });
         } catch (error) {
             throw error;
         }
