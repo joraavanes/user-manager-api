@@ -22,7 +22,7 @@ Content-Type: application/json
     "password": "PassWord"
 }
 
-### Updates user information
+### Updates user information ** token must renewed!
 PATCH http://localhost:3000/auth/update
 Content-Type: application/json
 
@@ -33,7 +33,7 @@ Content-Type: application/json
     "birthdate": "5/3/2022, 7:45:42 PM"
 }
 
-### Admin user updates other users' data
+### Admin user updates other users' data ** token must renewed!
 PATCH http://localhost:3000/auth/update
 Content-Type: application/json
 
@@ -43,7 +43,7 @@ Content-Type: application/json
     "fullname": "Mike Rosenburg"
 }
 
-### Updates user information
+### Updates user information ** token must renewed!
 PATCH http://localhost:3000/auth/update
 Content-Type: application/json
 
@@ -53,7 +53,7 @@ Content-Type: application/json
     "password": "NewPassWord@2022"
 }
 
-### signs out user by token 
+### signs out user by token ** token must renewed!s
 POST  http://localhost:3000/auth/signout
 Content-Type: application/json
 
