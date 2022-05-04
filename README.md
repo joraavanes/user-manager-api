@@ -55,12 +55,4 @@ To transpile it to the javascript, you can run the command below:
 npm run build
 ```
 
-  
-
-### Coding test interviewee details
-
-+ Name: Jora Avanesians
-
-+ Email: jora_a@outlook.com
-
-+ Position: Nodejs Backend Engineer
+ 
