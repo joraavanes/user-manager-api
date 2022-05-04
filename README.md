@@ -1,11 +1,9 @@
 
-# Climedo Coding Test
+# User Manager Api
 
   
 
-Hi!
 
-This is the backend app for the coding test of Climedo.
 
 To start with, There are number of dependencies before running it:
 
